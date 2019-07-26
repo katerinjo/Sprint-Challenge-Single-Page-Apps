@@ -6,11 +6,21 @@ import LocationsList from './LocationsList';
 import EpisodeList from './EpisodeList';
 
 export default function AppRouter() {
+  const count = "20";
   return <div className="page-view ui bottom attached segment active tab">
     <Switch>
-      <Route path='/characters' component={CharacterList} />
-      <Route path='/locations' render={() => <LocationsList displayCount="30" />} />
-      <Route path='/episodes' component={EpisodeList} />
+      <Route 
+        path='/characters'
+        render={() => <CharacterList displayCount={count}/>}
+      />
+      <Route
+        path='/locations'
+        render={() => <LocationsList displayCount={count} />}
+      />
+      <Route
+        path='/episodes'
+        render={() => <EpisodeList displayCount={count} />}
+      />
       <Route component={WelcomePage} />
     </Switch>
   </div>
