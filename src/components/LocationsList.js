@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Card } from "semantic-ui-react";
+import InfoCards from "./InfoCards";
 import pick from "../pickRandom";
 
 export default function LocationList({ displayCount }) {
@@ -20,7 +20,7 @@ export default function LocationList({ displayCount }) {
   }, [displayCount])
 
   return <section className='location-list grid-view'>
-      <Card.Group>
+      {/* <Card.Group>
         {locations.map(location => (
           <Card 
             header={location.name}
@@ -28,6 +28,13 @@ export default function LocationList({ displayCount }) {
             description={`Dimension: ${location.dimension}`}
           />
         ))}
-      </Card.Group>
+      </Card.Group> */}
+      <InfoCards
+        data={locations}
+        header="name"
+        meta="type"
+        detailNames={["dimension"]}
+        detailFuns={[dim => `Dimension: ${dim}`]}
+      />
     </section>
 }
