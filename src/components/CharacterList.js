@@ -34,5 +34,4 @@ export default function CharacterList() {
         ))}
       </Card.Group>
     </section>
-
 }
