@@ -3,29 +3,29 @@ import axios from "axios";
 import InfoCards from "./InfoCards";
 import pick from "../pickRandom";
 
-export default function LocationList({ displayCount }) {
+export default function EpisodeList({ displayCount }) {
   // TODO: Add useState to track data from useEffect
-  const [locations, setLocations] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
 
   useEffect(() => {
     // TODO: Add AJAX/API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    const chosen = pick(1, 67, Number(displayCount));
+    const chosen = pick(1, 31, Number(displayCount));
     axios
-      .get(`https://rickandmortyapi.com/api/location/${chosen.join(",")}`)
+      .get(`https://rickandmortyapi.com/api/episode/${chosen.join(",")}`)
       .then(res => {
-        setLocations(res.data);
+        setEpisodes(res.data);
       })
       .catch(console.log);
   }, [displayCount])
 
-  return <section className='location-list grid-view'>
+  return <section className='episode-list grid-view'>
       <InfoCards
-        data={locations}
-        header="name"
-        meta="type"
-        detailNames={["dimension"]}
-        detailFuns={[dim => `Dimension: ${dim}`]}
+        data={episodes}
+        header="episode"
+        meta="air_date"
+        detailNames={["name"]}
+        detailFuns={[a => a]}
       />
     </section>
 }
