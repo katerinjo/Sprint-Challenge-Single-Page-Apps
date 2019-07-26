@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Card, Image } from "semantic-ui-react";
+import InfoCards from "./InfoCards";
 import pick from "../pickRandom";
 
 export default function CharacterList({ displayCount }) {
@@ -20,20 +20,18 @@ export default function CharacterList({ displayCount }) {
   }, [displayCount])
 
   return <section className='character-list grid-view'>
-      <Card.Group>
-        {characters.map(character => (
-          <Card>
-            <Image src={character.image} />
-            <Card.Header>{character.name}</Card.Header>
-            <Card.Meta>{character.species}</Card.Meta>
-            <Card.Description>
-              {[character.type && <p>Type: {character.type}</p>,
-              character.gender && <p>Gender: {character.gender}</p>,
-              character.status && <p>Status: {character.status}</p>,
-              character.origin && <p>Origin: {character.origin.name}</p>]}
-            </Card.Description>
-          </Card>
-        ))}
-      </Card.Group>
-    </section>
+    <InfoCards
+      data={characters}
+      image="image"
+      header="name"
+      meta="species"
+      detailNames={["type", "gender", "status", "origin"]}
+      detailFuns={[
+        t => `Type: ${t}`,
+        g => `Gender: ${g}`,
+        s => `Status: ${s}`,
+        o => `Origin: ${o}`
+      ]}
+    />
+  </section>
 }

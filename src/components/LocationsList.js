@@ -20,15 +20,6 @@ export default function LocationList({ displayCount }) {
   }, [displayCount])
 
   return <section className='location-list grid-view'>
-      {/* <Card.Group>
-        {locations.map(location => (
-          <Card 
-            header={location.name}
-            meta={location.type}
-            description={`Dimension: ${location.dimension}`}
-          />
-        ))}
-      </Card.Group> */}
       <InfoCards
         data={locations}
         header="name"
