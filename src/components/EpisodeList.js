@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Card } from "semantic-ui-react";
+// import { Card } from "semantic-ui-react";
+import InfoCards from "./InfoCards";
 import pick from "../pickRandom";
 
 export default function EpisodeList({ displayCount }) {
@@ -19,8 +20,8 @@ export default function EpisodeList({ displayCount }) {
       .catch(console.log);
   }, [displayCount])
 
-  return <section className='location-list grid-view'>
-      <Card.Group>
+  return <section className='episode-list grid-view'>
+      {/* <Card.Group>
         {episodes.map(episode => (
           <Card 
             header={episode.episode}
@@ -28,6 +29,13 @@ export default function EpisodeList({ displayCount }) {
             description={episode.name}
           />
         ))}
-      </Card.Group>
+      </Card.Group> */}
+      <InfoCards
+        data={episodes}
+        header="episode"
+        meta="air_date"
+        detailNames={["name"]}
+        detailFuns={[a => a]}
+      />
     </section>
 }

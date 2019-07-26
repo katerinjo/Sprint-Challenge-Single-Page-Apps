@@ -8,12 +8,6 @@ export default function InfoCards({
     <Card.Group>
       {data.map(item => (
         <Card>
-          <Card.Description>
-            {[character.type && <p>Type: {character.type}</p>,
-            character.gender && <p>Gender: {character.gender}</p>,
-            character.status && <p>Status: {character.status}</p>,
-            character.origin && <p>Origin: {character.origin.name}</p>]}
-          </Card.Description>
           {[
             item[image] && <Image src={item[image]} />,
             item[header] && <Card.Header>{item[header]}</Card.Header>,
